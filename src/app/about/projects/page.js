@@ -1,6 +1,6 @@
 export default async function ProjectsPage() {
 
-  const response = await fetch("http://localhost:3001/repos")
+  const response = await fetch("http://localhost:3001/repos", { cache: 'no-store' })
   const repos = await response.json()
 
   return (
