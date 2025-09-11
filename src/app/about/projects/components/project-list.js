@@ -8,10 +8,14 @@ export default async function ProjectList() {
             <ul className="space-y-4">
                   {repos.map((repo) => (
                         <li key={repo.id} className="mb-4">
-                              <Card>
-                                    <div>{repo.title}</div>
+                              <Card className="font-mono">
+                                    <div className="flex justify-between items-center mb-4">
+                                          <div>{repo.title}</div>
+                                          <div className="flex items-center gap-1">
+                                                <span>⭐</span>{repo.stargazers_count}
+                                          </div>
+                                    </div>
                                     <div>{repo.description}</div>
-                                    <div>{repo.stargazers_count}</div>
                               </Card>
                         </li>
                   ))}
