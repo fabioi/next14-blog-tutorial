@@ -4,7 +4,7 @@ export default async function ProjectList() {
       const response = await fetch("http://localhost:3001/repos", { cache: 'no-store' })
       const repos = await response.json()
 
-      throw new Error("Error");
+      // throw new Error("Error");
 
       return (
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
