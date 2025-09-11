@@ -1,3 +1,5 @@
+import Card from "@/components/card"
+
 export default async function ProjectList() {
       const response = await fetch("http://localhost:3001/repos", { cache: 'no-store' })
       const repos = await response.json()
@@ -6,9 +8,11 @@ export default async function ProjectList() {
             <ul className="space-y-4">
                   {repos.map((repo) => (
                         <li key={repo.id} className="mb-4">
-                              <div>{repo.title}</div>
-                              <div>{repo.description}</div>
-                              <div>{repo.stargazers_count}</div>
+                              <Card>
+                                    <div>{repo.title}</div>
+                                    <div>{repo.description}</div>
+                                    <div>{repo.stargazers_count}</div>
+                              </Card>
                         </li>
                   ))}
             </ul>
