@@ -1,6 +1,11 @@
+export const metadata = {
+
+  title: "About me",
+  description: "About me",
+}
+
 export default function AboutPage() {
 
-  // throw new Error("Error");
 
   return (
     <>

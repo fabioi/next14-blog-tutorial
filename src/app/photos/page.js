@@ -4,6 +4,11 @@ import dog2 from './../../../public/images/dog2.png'
 import dog3 from './../../../public/images/dog3.png'
 import dog4 from './../../../public/images/dog4.png'
 
+export const metadata = {
+      title: "Photos",
+      description: "Photos",
+}
+
 export default function PhotosPage() {
       return (
             <>

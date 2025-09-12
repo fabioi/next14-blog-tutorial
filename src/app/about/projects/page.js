@@ -3,6 +3,11 @@ import ProjectListLoading from "@/app/about/projects/components/project-list-loa
 import { Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 
+export const metadata = {
+  title: "Projects",
+  description: "Projects",
+}
+
 export default async function ProjectsPage() {
 
   return (
