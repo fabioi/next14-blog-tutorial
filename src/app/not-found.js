@@ -3,7 +3,7 @@ export default function NotFound() {
             <>
                   <div>
                         <h2>Not Found</h2>
-                        <p>Ciao! We couldn't find requested resource</p>
+                        <p>Ciao! We couldn&apos;t find requested resource</p>
                   </div>
             </>
       )

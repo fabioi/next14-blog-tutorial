@@ -1,3 +1,16 @@
+/* src/components/navigation.module.css */
+@reference "tailwindcss";
+
 .link {
-  @apply md:p-1 p-2   hover:bg-gray-200  hover:text-gray-700 text-2xl md:text-base
+  @apply p-2 text-2xl;
+}
+
+@media (min-width: 768px) {
+  .link {
+    @apply p-1 text-base;
+  }
+}
+
+.link:hover {
+  @apply bg-gray-200 text-gray-700;
 }
