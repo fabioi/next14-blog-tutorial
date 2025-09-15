@@ -1,5 +1,7 @@
+import fs from 'fs'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
+import path from 'path'
 
 export async function generateMetadata({ params }) {
       return {
@@ -13,16 +15,20 @@ export default function BlogPost({ params }) {
             notFound()
       }
 
+      // Read the MDX file content
+      const filePath = path.join(process.cwd(), 'src/app/content', `${params.slug}.mdx`)
+
+      // Check if file exists
+      if (!fs.existsSync(filePath)) {
+            notFound()
+      }
+
+      const content = fs.readFileSync(filePath, 'utf8')
+
       return (
             <>
                   <article className="prose dark:prose-invert">
-                        <MDXRemote source={
-                              `# Hello world
-
-This is from server component for ${params.slug}`
-                        }
-
-                        />
+                        <MDXRemote source={content} />
                   </article>
             </>
       )
