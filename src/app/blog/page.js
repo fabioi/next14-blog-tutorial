@@ -24,7 +24,7 @@ export default async function BlogPostPage() {
                   <ul>
                         {posts.map((post) => (
                               <li key={post.slug}>
-                                    <Link href={`/blog/${post.slug}`} className="text-2xl font-semibold text-gray-800 dark:text-gray-200">{post.frontmatter.title}</Link>
+                                    <Link href={`/blog/${post.slug}`} className="text-2xl font-semibold text-gray-800 dark:text-gray-200">{post.title}</Link>
 
 
                               </li>
