@@ -4,8 +4,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
 }
 
 body {
-  @apply bg-white text-gray-700 container mx-auto dark:bg-gray-900 dark:text-gray-300 max-w-2xl;
+  @apply container mx-auto max-w-2xl bg-white text-gray-700 transition-colors duration-200 dark:bg-gray-900 dark:text-gray-300;
 }

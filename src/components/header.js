@@ -1,17 +1,19 @@
-import Navigation from "./navigation"
-import Link from "next/link"
+import Navigation from "./navigation";
+import ThemeToggle from "./theme-toggle";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <header className="flex justify-between md:items-center mt-4">
       <div className="flex items-center md:space-x-12">
         <div className="hidden md:block">
-          <Link href="/" className="text-xl">Fabio Ingrasciotta</Link>
+          <Link href="/" className="text-xl">
+            Fabio Ingrasciotta
+          </Link>
         </div>
         <Navigation />
-
       </div>
-      <div> Dark toggle</div>
+      <ThemeToggle />
     </header>
-  )
+  );
 }
