@@ -1,23 +1,28 @@
 import fs from 'fs'
 import path from 'path'
+import { parseFrontmatter } from '../../lib/frontmatter'
 
 export default async function BlogPostPage() {
       const files = fs.readdirSync(path.join(process.cwd(), 'src/app/content')).filter(file => file.endsWith('.mdx'))
 
-      const posts = await Promise.all(files.map(async file => {
-            const content = await fs.readFileSync(path.join(process.cwd(), 'src/app/content', file), 'utf8')
-            return {
-                  frontmatter: content.split('---')[1],
-                  slug: file.replace('.mdx', '')
-            }
-      }))
+      const posts = await Promise.all(
+            files.map(async (file) => {
+                  const raw = fs.readFileSync(path.join(process.cwd(), 'src/app/content', file), 'utf8')
+                  const { data } = parseFrontmatter(raw)
+                  return {
+                        title: data.title || file.replace('.mdx', ''),
+                        description: data.description || '',
+                        slug: file.replace('.mdx', ''),
+                  }
+            })
+      )
 
       return (
             <>
                   <h1>Recent posts</h1>
                   <ul>
-                        {posts.map(post => (
-                              <li key={post.slug}>{post.frontmatter.title}</li>
+                        {posts.map((post) => (
+                              <li key={post.slug}>{post.title}</li>
                         ))}
                   </ul>
             </>

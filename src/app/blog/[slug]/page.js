@@ -2,11 +2,21 @@ import fs from 'fs'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import path from 'path'
+import { parseFrontmatter } from '../../../lib/frontmatter'
 
 export async function generateMetadata({ params }) {
+      const filePath = path.join(process.cwd(), 'src/app/content', `${params.slug}.mdx`)
+      if (!fs.existsSync(filePath)) {
+            return {
+                  title: `Blog - ${params.slug}`,
+                  description: `Blog post about ${params.slug}`,
+            }
+      }
+      const raw = fs.readFileSync(filePath, 'utf8')
+      const { data } = parseFrontmatter(raw)
       return {
-            title: `Blog - ${params.slug}`,
-            description: `Blog post about ${params.slug}`,
+            title: data.title || `Blog - ${params.slug}`,
+            description: data.description || `Blog post about ${params.slug}`,
       }
 }
 
@@ -23,7 +33,8 @@ export default function BlogPost({ params }) {
             notFound()
       }
 
-      const content = fs.readFileSync(filePath, 'utf8')
+      const raw = fs.readFileSync(filePath, 'utf8')
+      const { content } = parseFrontmatter(raw)
 
       return (
             <>
