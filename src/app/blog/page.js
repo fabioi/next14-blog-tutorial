@@ -8,10 +8,6 @@ export async function generateMetadata() {
 }
 
 export default function BlogPage() {
-      if (!["first", "second"].includes(params.slug)) {
-            notFound()
-      }
-
       return (
             <>
                   <article className="prose dark:prose-invert">
