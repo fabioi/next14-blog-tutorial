@@ -1,4 +1,5 @@
 import fs from 'fs'
+import Link from 'next/link'
 import path from 'path'
 import { parseFrontmatter } from '../../lib/frontmatter'
 
@@ -22,7 +23,11 @@ export default async function BlogPostPage() {
                   <h1>Recent posts</h1>
                   <ul>
                         {posts.map((post) => (
-                              <li key={post.slug}>{post.title}</li>
+                              <li key={post.slug}>
+                                    <Link href={`/blog/${post.slug}`} className="text-2xl font-semibold text-gray-800 dark:text-gray-200">{post.frontmatter.title}</Link>
+
+
+                              </li>
                         ))}
                   </ul>
             </>
